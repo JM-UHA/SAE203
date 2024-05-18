@@ -1,0 +1,17 @@
+[project]
+name = "SAE2.01"
+version = "0.0.0"
+description = "Default template for PDM package"
+authors = [
+    {name = "Julien Mauroy, Thomas Wuillemin, Théophile Bouquet", email = "julien.mauroy@uha.fr, thomas.wuillemin@uha.fr, theophile.bouquet@uha.fr"},
+]
+dependencies = [
+    "django>=5.0.6",
+]
+requires-python = "~=3.12"
+readme = "README.md"
+license = {text = "None"}
+
+
+[tool.pdm]
+distribution = false
