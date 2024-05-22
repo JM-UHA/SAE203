@@ -1,12 +1,15 @@
+from django.http import HttpRequest
 from django.shortcuts import render
-from .forms import AuteursForm
-from . import  models
 
-def ajout(request):
-    if request.method == 'POST'
-        form = AuteursForm(request)
+from .forms import AuteursForm
+
+
+def ajout(request: HttpRequest):
+    if request.method == "POST":
+        form = AuteursForm(request.POST)
         if form.is_valid():
-            Auteurs = form.save()
-            return render(request, "SAE201App/affiche.html"),{"Auteur" : Auteurs})
+            auteurs = form.save()
+            return render(request, "SAE201App/affiche.html", {"Auteur": auteurs})
+
 
 # Create your views here.
