@@ -5,7 +5,7 @@ from . import models
 
 class AuteursForm(ModelForm):
     class Meta:
-        model = models.Auteurs
+        model = models.Auteur
         fields = ("nom", "prenom", "age", "photo")
         labels = {
             "nom": "Nom",
@@ -19,3 +19,21 @@ class JoueurForm(ModelForm):
     class Meta:
         model = models.Joueur
         fields = ("nom", "prenom", "mail", "type")
+        labels = {
+            "nom": "Nom",
+            "prenom": "Prénom",
+            "mail": "Mail",
+            "type": "Type",
+        }
+
+
+class CommentaireForm(ModelForm):
+    class Meta:
+        model = models.CommentaireJeu
+        fields = ("jeu", "joueur", "note", "commentaire")
+        labels = {
+            "jeu": "Jeu",
+            "joueur": "Joueur",
+            "note": "Votre note sur 10",
+            "commentaire": "Commentaire",
+        }

@@ -1,0 +1,13 @@
+{% extends "skeletons/main.html" %}
+
+{% block "title" %}Modifier un commentaire{% endblock %}
+
+{% block "content" %}
+<h1>Modifier un commentaire</h1>
+
+<form method="POST" action="{% url 'commentaire.edit' jeu_id=jeu.pk id=commentaire.pk %}">
+    {% csrf_token %}
+    {{ form.as_ul }}
+    <input type="submit" value="Modifier">
+</form>
+{% endblock %}

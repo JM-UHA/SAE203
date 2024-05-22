@@ -1,0 +1,18 @@
+{#
+    Véritablement, ce fichier ne devrait pas être là, en fait...
+    Les commentaires ne seront que visible sous les jeux.
+#}
+
+{% extends "skeletons/main.html" %}
+
+{% block "title" %}Tout les commentaires{% endblock %}
+
+{% block "content" %}
+<h1>Tout les commentaires</h1>
+
+{% for commentaire in commentaires %}
+    <h5>Commentaire par {{ commentaire.joueur }}</h5>
+    <a href="{{ commentaire.view }}">Voir le commentaire</a>
+{% endfor %}
+
+{% endblock %}
