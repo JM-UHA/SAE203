@@ -5,8 +5,8 @@ from django.db import models
 
 class Joueur(models.Model):
     class Type(models.TextChoices):
-        particulier = "PAR", ("Particulier")
-        professionnel = "PRO", ("Professionnel")
+        particulier = "PAR", "Particulier"
+        professionnel = "PRO", "Professionnel"
 
     nom = models.CharField(max_length=50)
     prenom = models.CharField(max_length=50)
