@@ -1,10 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>creation de joueurs</title>
-</head>
-<body>
+{% extends "skeletons/main.html" %}
 
+{% block "title" %}Création du joueur{% endblock %}
+
+{% block "content" %}
+<body>
+    <h1>Création du joueur</h1>
+    <form method="ajouter_joueur" action="joueur/traitement">
+        {% csrf_token %}
+        {{ form.as_ul }} <!
+        <input type="submit" value="envoyer␣les␣données"\>
+    </form>
 </body>
-</html>
+{% endblock %}
