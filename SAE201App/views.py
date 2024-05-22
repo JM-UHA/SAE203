@@ -12,6 +12,6 @@ def ajout(request: HttpRequest):
             return render(request, "SAE201App/formulaire_auteurs.html", {"Auteur": auteurs})
         else:
             form = AuteursForm()
-            return render("auteurs/ajout.html",{"form": form})
+            return render("formulaire/ajout.html",{"form": form})
 
 # Create your views here.
