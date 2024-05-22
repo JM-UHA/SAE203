@@ -9,7 +9,9 @@ def ajout(request: HttpRequest):
         form = AuteursForm(request.POST)
         if form.is_valid():
             auteurs = form.save()
-            return render(request, "SAE201App/affiche.html", {"Auteur": auteurs})
-
+            return render(request, "SAE201App/formulaire_auteurs.html", {"Auteur": auteurs})
+        else:
+            form = AuteursForm()
+            return render("formulaire/ajout.html",{"form": form})
 
 # Create your views here.
