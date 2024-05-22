@@ -13,6 +13,7 @@ authors = [
 ]
 dependencies = [
     "django>=5.0.6",
+    "Pillow>=10.3.0",
 ]
 requires-python = "~=3.10"
 readme = "README.md"
