@@ -4,4 +4,12 @@
 
 {% block "content" %}
 <h1>Voir un commentaire</h1>
+
+<h5>Joueur</h5>
+<p>{{ commentaire.joueur }}</p>
+<h5>Note</h5>
+<p>{{ commentaire.note }}/10</p>
+<h5>Commentaire</h5>
+<p>{{ commentaire.commentaire }}</p>
+<p>Posté le {{ commentaire.date }}</p>
 {% endblock %}
