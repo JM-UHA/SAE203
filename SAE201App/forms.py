@@ -13,3 +13,9 @@ class AuteursForm(ModelForm):
             "age": "Âge",
             "photo": "Photo",
         }
+
+
+class JoueurForm(ModelForm):
+    class Meta:
+        model = models.Joueur
+        fields = ("nom", "prenom", "mail", "type")

@@ -13,6 +13,17 @@ class Auteurs(models.Model):
         return f"{self.nom} {self.prenom} {self.age}"
 
 
+class Joueur(models.Model):
+    class Type(models.TextChoices):
+        particulier = "PAR", "Particulier"
+        professionnel = "PRO", "Professionnel"
+
+    nom = models.CharField(max_length=50)
+    prenom = models.CharField(max_length=50)
+    mail = models.EmailField(max_length=50)
+    motdepasse = models.CharField(max_length=50)
+
+
 class CommentaireJeux(models.Model):
     jeux: models.ForeignKey["models.Model"] = models.ForeignKey(
         "Jeux", on_delete=models.CASCADE
