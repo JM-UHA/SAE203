@@ -27,9 +27,9 @@ SECRET_KEY = os.environ.get(
 )
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get("DJANGO_DEBUG", "True") == "True"
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
 
 
 # Application definition
@@ -82,8 +82,24 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "db.sqlite3",
-    }
+    },
+    "production": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": os.environ.get("DJANGO_POSTGRES_NAME"),
+        "USER": os.environ.get("DJANGO_POSTGRES_USER"),
+        "PASSWORD": os.environ.get("DJANGO_POSTGRES_PASSWORD"),
+        "HOST": os.environ.get("DJANGO_POSTGRES_HOST"),
+        "PORT": os.environ.get("DJANGO_POSTGRES_PORT", "5432"),
+        # "OPTIONS": {
+        #     "service": "sae201",
+        #     "passfile": ".pgpass",
+        # },
+    },
 }
+
+
+if not DEBUG:  # En production
+    DATABASES["default"] = DATABASES["production"]
 
 
 # Password validation
@@ -129,5 +145,5 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Media
 
-MEDIA_URL = "/media/"
+MEDIA_URL = "media/"
 MEDIA_ROOT = str((BASE_DIR / "media").resolve())

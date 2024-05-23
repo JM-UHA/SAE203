@@ -14,7 +14,9 @@ def all(request: HttpRequest, jeu_id: int):
 
     commentaires = CommentaireJeu.objects.filter(jeu=jeu)
 
-    return render(request, "commentaires/all.html", {"commentaires": commentaires, "jeu": jeu})
+    return render(
+        request, "commentaires/all.html", {"commentaires": commentaires, "jeu": jeu}
+    )
 
 
 def create(request: HttpRequest, jeu_id: int):
@@ -25,7 +27,9 @@ def create(request: HttpRequest, jeu_id: int):
         return render(request, "jeux/not_found.html", {"id": jeu_id})
 
     if request.method == "GET":
-        return render(request, "commentaires/create.html", {"form": CommentaireForm(), "jeu": jeu})
+        return render(
+            request, "commentaires/create.html", {"form": CommentaireForm(), "jeu": jeu}
+        )
 
     if request.method == "POST":
         form = CommentaireForm(request.POST)
@@ -34,7 +38,9 @@ def create(request: HttpRequest, jeu_id: int):
             commentaire.jeu = jeu
             commentaire.save()
         else:
-            return render(request, "commentaires/create.html", {"form": form, "jeu": jeu})
+            return render(
+                request, "commentaires/create.html", {"form": form, "jeu": jeu}
+            )
 
     return all(request, jeu_id)
 
@@ -51,7 +57,9 @@ def view(request: HttpRequest, jeu_id: int, id: int):
     except CommentaireJeu.DoesNotExist:
         return render(request, "commentaires/not_found.html", {"id": id})
 
-    return render(request, "commentaires/view.html", {"commentaire": commentaire, "jeu": jeu})
+    return render(
+        request, "commentaires/view.html", {"commentaire": commentaire, "jeu": jeu}
+    )
 
 
 def edit(request: HttpRequest, jeu_id: int, id: int):
@@ -70,7 +78,11 @@ def edit(request: HttpRequest, jeu_id: int, id: int):
         return render(
             request,
             "commentaires/edit.html",
-            {"form": CommentaireForm(instance=commentaire), "jeu": jeu, "commentaire": commentaire},
+            {
+                "form": CommentaireForm(instance=commentaire),
+                "jeu": jeu,
+                "commentaire": commentaire,
+            },
         )
     if request.method == "POST":
         form = CommentaireForm(request.POST, instance=commentaire)

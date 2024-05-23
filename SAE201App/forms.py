@@ -38,22 +38,25 @@ class CommentaireForm(ModelForm):
             "commentaire": "Commentaire",
         }
 
+
 class JeuForm(ModelForm):
     class Meta:
         model = models.Jeu
-        fields = ("titre", "année de sortie", "photo boite", "éditeur","auteur","catégorie")
+        fields = ("titre", "annee", "photo", "editeur", "auteur", "categorie")
         labels = {
             "titre": "Titre",
-            "année de sortie": "Annee",
-            "photo boite": "Photo",
-            "éditeur": "Editeur",
+            "annee": "Année",
+            "photo": "Photo",
+            "editeur": "Éditeur",
             "auteur": "Auteur",
-            "catégorie": "Categorie"
+            "categorie": "Catégorie",
         }
+
+
 class CategorieForm(ModelForm):
     class Meta:
-        model = models.Categorie
-        fields = ("nom", "descritif")
+        model = models.CategorieJeu
+        fields = ("nom", "descriptif")
         labels = {
             "nom": "Nom",
             "descriptif": "Descriptif",
