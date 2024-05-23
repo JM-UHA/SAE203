@@ -41,3 +41,12 @@ class CommentaireJeu(models.Model):
 
 
 MODELS: typing.List[typing.Type[models.Model]] = [Auteur, Joueur, CommentaireJeu]
+
+class Jeu(models.Model):
+
+    titre = models.CharField(max_length=50)
+    editeur = models.CharField(max_length=50)
+    auteur = models.CharField(max_length=50)
+    #categorie = models.ForeignKey("CategorieJeu", on_delete=models.Set null)
+    photo = models.ImageField(null=True)
+    annee= models.IntegerField()
