@@ -11,7 +11,7 @@ class Auteur(models.Model):
     photo = models.ImageField(null=True)
 
     def __str__(self):
-        return f"{self.nom} {self.prenom} {self.age}"
+        return f"{self.nom} {self.prenom} - {self.age}"
 
 
 class Joueur(models.Model):
@@ -23,12 +23,16 @@ class Joueur(models.Model):
     prenom = models.CharField(max_length=50)
     mail = models.EmailField(max_length=50)
     motdepasse = models.CharField(max_length=50)
+    type = models.CharField(max_length=3, choices=Type)  # type: ignore
+
+    def __str__(self) -> str:
+        return f"{self.nom} {self.prenom} - {self.mail}"
 
 
 class CommentaireJeu(models.Model):
-    jeu: models.ForeignKey["models.Model"] = models.ForeignKey(
+    jeu: models.ForeignKey["Jeu"] = models.ForeignKey(
         "Jeu", on_delete=models.CASCADE
-    )  # todo: modifier signature
+    )
     joueur: models.ForeignKey["Joueur"] = models.ForeignKey(
         "Joueur", on_delete=models.CASCADE
     )
@@ -37,10 +41,7 @@ class CommentaireJeu(models.Model):
     date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.jeu} noté par {self.joueur} avec {self.note}/10"
-
-
-MODELS: typing.List[typing.Type[models.Model]] = [Auteur, Joueur, CommentaireJeu]
+        return f"{self.jeu} - {self.joueur} avec {self.note}/10"
 
 class Jeu(models.Model):
 
@@ -50,3 +51,9 @@ class Jeu(models.Model):
     #categorie = models.ForeignKey("CategorieJeu", on_delete=models.Set null)
     photo = models.ImageField(null=True)
     annee= models.IntegerField()
+
+    def __str__(self) -> str:
+        return f"{self.titre} - {self.editeur} - {self.annee}"
+
+
+MODELS: typing.List[typing.Type[models.Model]] = [Auteur, Joueur, Jeu, CommentaireJeu]

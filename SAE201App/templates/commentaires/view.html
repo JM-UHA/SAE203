@@ -5,11 +5,14 @@
 {% block "content" %}
 <h1>Voir un commentaire</h1>
 
-<h5>Joueur</h5>
+<h2>Joueur</h2>
 <p>{{ commentaire.joueur }}</p>
-<h5>Note</h5>
+<h2>Note</h2>
 <p>{{ commentaire.note }}/10</p>
-<h5>Commentaire</h5>
+<h2>Commentaire</h2>
 <p>{{ commentaire.commentaire }}</p>
 <p>Posté le {{ commentaire.date }}</p>
+
+<a href="{% url 'commentaire.edit' jeu_id=jeu.pk id=commentaire.pk %}">Modifier</a> -
+<a href="{% url 'commentaire.delete' jeu_id=jeu.pk id=commentaire.pk %}">Supprimer</a>
 {% endblock %}

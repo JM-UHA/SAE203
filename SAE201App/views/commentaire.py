@@ -2,64 +2,67 @@ from django.http import HttpRequest
 from django.shortcuts import render
 
 from ..forms import CommentaireForm
-from ..models import CommentaireJeu
+from ..models import CommentaireJeu, Jeu
 
 
-def commentaire_all(request: HttpRequest, jeu_id: int):
+def all(request: HttpRequest, jeu_id: int):
     """Retourne tout les commentaires."""
-    # try:
-    #     jeu = Jeu.objects.get(id=jeu_id)
-    # except Jeu.DoesNotExist:
-    #     return render(request, "jeux/not_found.html", {"id": jeu_id})
+    try:
+        jeu = Jeu.objects.get(id=jeu_id)
+    except Jeu.DoesNotExist:
+        return render(request, "jeux/not_found.html", {"id": jeu_id})
 
-    # commentaires = CommentaireJeu.objects.filter(jeu=jeu)
-    commentaires = CommentaireJeu.objects.filter()
-    return render(request, "commentaires/all.html", {"commentaires": commentaires})
+    commentaires = CommentaireJeu.objects.filter(jeu=jeu)
+
+    return render(request, "commentaires/all.html", {"commentaires": commentaires, "jeu": jeu})
 
 
-def commentaire_create(request: HttpRequest, jeu_id: int):
+def create(request: HttpRequest, jeu_id: int):
     """Ajoute un commentaire."""
-    # try:
-    #     jeu = Jeu.objects.get(id=jeu_id)
-    # except Jeu.DoesNotExist:
-    #     return render(request, "jeux/not_found.html", {"id": jeu_id})
+    try:
+        jeu = Jeu.objects.get(id=jeu_id)
+    except Jeu.DoesNotExist:
+        return render(request, "jeux/not_found.html", {"id": jeu_id})
 
     if request.method == "GET":
-        return render(request, "commentaires/add.html", {"form": CommentaireForm()})
+        return render(request, "commentaires/create.html", {"form": CommentaireForm(), "jeu": jeu})
 
     if request.method == "POST":
         form = CommentaireForm(request.POST)
         if form.is_valid():
-            form.save()
+            commentaire: CommentaireJeu = form.save(commit=False)
+            commentaire.jeu = jeu
+            commentaire.save()
         else:
-            return render(request, "commentaires/add.html", {"form": form})
+            return render(request, "commentaires/create.html", {"form": form, "jeu": jeu})
 
-    return commentaire_all(request, jeu_id)
+    return all(request, jeu_id)
 
 
-def commentaire_view(request: HttpRequest, jeu_id: int, id: int):
+def view(request: HttpRequest, jeu_id: int, id: int):
     """Retourne un commentaire."""
-    # try:
-    #     jeu = Jeu.objects.get(id=jeu_id)
-    # except Jeu.DoesNotExist:
-    #     return render(request, "jeux/not_found.html", {"id": jeu_id})
+    try:
+        jeu = Jeu.objects.get(id=jeu_id)
+    except Jeu.DoesNotExist:
+        return render(request, "jeux/not_found.html", {"id": jeu_id})
 
     try:
-        commentaire = CommentaireJeu.objects.get(id=id)
+        commentaire = CommentaireJeu.objects.filter(jeu=jeu).get(id=id)
     except CommentaireJeu.DoesNotExist:
         return render(request, "commentaires/not_found.html", {"id": id})
-    return render(request, "commentaires/view.html", {"commentaire": commentaire})
+
+    return render(request, "commentaires/view.html", {"commentaire": commentaire, "jeu": jeu})
 
 
-def commentaire_edit(request: HttpRequest, jeu_id: int, id: int):
+def edit(request: HttpRequest, jeu_id: int, id: int):
     """Modifie un commentaire."""
-    # try:
-    #     jeu = Jeu.objects.get(id=jeu_id)
-    # except Jeu.DoesNotExist:
-    #     return render(request, "jeux/not_found.html", {"id": jeu_id})
+    try:
+        jeu = Jeu.objects.get(id=jeu_id)
+    except Jeu.DoesNotExist:
+        return render(request, "jeux/not_found.html", {"id": jeu_id})
 
     try:
-        commentaire = CommentaireJeu.objects.get(id=id)
+        commentaire = CommentaireJeu.objects.filter(jeu=jeu).get(id=id)
     except CommentaireJeu.DoesNotExist:
         return render(request, "commentaires/not_found.html", {"id": id})
 
@@ -67,28 +70,28 @@ def commentaire_edit(request: HttpRequest, jeu_id: int, id: int):
         return render(
             request,
             "commentaires/edit.html",
-            {"form": CommentaireForm(), "jeu": jeu, "commentaire": commentaire},
+            {"form": CommentaireForm(instance=commentaire), "jeu": jeu, "commentaire": commentaire},
         )
     if request.method == "POST":
         form = CommentaireForm(request.POST, instance=commentaire)
         if form.is_valid():
             form.save()
         else:
-            return render(request, "commentaires/edit.html", {"form": form})
-    return commentaire_view(request, jeu_id, id)
+            return render(request, "commentaires/edit.html", {"form": form, "jeu": jeu})
+    return view(request, jeu_id, id)
 
 
-def commentaire_delete(request: HttpRequest, jeu_id: int, id: int):
+def delete(request: HttpRequest, jeu_id: int, id: int):
     """Supprime un commentaire."""
-    # try:
-    #     jeu = Jeu.objects.get(id=jeu_id)
-    # except Jeu.DoesNotExist:
-    #     return render(request, "jeux/not_found.html", {"id": jeu_id})
+    try:
+        jeu = Jeu.objects.get(id=jeu_id)
+    except Jeu.DoesNotExist:
+        return render(request, "jeux/not_found.html", {"id": jeu_id})
 
     try:
-        commentaire = CommentaireJeu.objects.get(id=id)
+        commentaire = CommentaireJeu.objects.filter(jeu=jeu).get(id=id)
     except CommentaireJeu.DoesNotExist:
         return render(request, "commentaires/not_found.html", {"id": id})
 
     commentaire.delete()
-    return commentaire_all(request, jeu_id)
+    return all(request, jeu_id)

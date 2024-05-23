@@ -1,7 +1,7 @@
-{#
+<!--
     Véritablement, ce fichier ne devrait pas être là, en fait...
     Les commentaires ne seront que visible sous les jeux.
-#}
+-->
 
 {% extends "skeletons/main.html" %}
 
@@ -9,10 +9,12 @@
 
 {% block "content" %}
 <h1>Tout les commentaires</h1>
+<a href="{% url 'commentaire.create' jeu_id=jeu.pk %}">Ajouter un commentaire</a>
 
 {% for commentaire in commentaires %}
     <h5>Commentaire par {{ commentaire.joueur }}</h5>
-    <a href="{{ commentaire.view }}">Voir le commentaire</a>
+    <a href="{% url 'commentaire.view' jeu_id=jeu.pk id=commentaire.pk %}">Voir</a> -
+    <a href="{% url 'commentaire.edit' jeu_id=jeu.pk id=commentaire.pk %}">Modifier</a> -
+    <a href="{% url 'commentaire.delete' jeu_id=jeu.pk id=commentaire.pk %}">Supprimer</a>
 {% endfor %}
-
 {% endblock %}
