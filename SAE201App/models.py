@@ -55,5 +55,12 @@ class Jeu(models.Model):
     def __str__(self) -> str:
         return f"{self.titre} - {self.editeur} - {self.annee}"
 
+class Categorie(models.Model):
+
+    nom = models.CharField(max_length=50)
+    descriptif = models.TextField(max_length=5000)
+
+    def __str__(self) -> str:
+        return f"{self.nom}"
 
 MODELS: typing.List[typing.Type[models.Model]] = [Auteur, Joueur, Jeu, CommentaireJeu]

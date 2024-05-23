@@ -3,7 +3,7 @@ from django.forms import ModelForm
 from . import models
 
 
-class AuteursForm(ModelForm):
+class AuteurForm(ModelForm):
     class Meta:
         model = models.Auteur
         fields = ("nom", "prenom", "age", "photo")
@@ -36,4 +36,25 @@ class CommentaireForm(ModelForm):
             "joueur": "Joueur",
             "note": "Votre note sur 10",
             "commentaire": "Commentaire",
+        }
+
+class JeuForm(ModelForm):
+    class Meta:
+        model = models.Jeu
+        fields = ("titre", "année de sortie", "photo boite", "éditeur","auteur","catégorie")
+        labels = {
+            "titre": "Titre",
+            "année de sortie": "Annee",
+            "photo boite": "Photo",
+            "éditeur": "Editeur",
+            "auteur": "Auteur",
+            "catégorie": "Categorie"
+        }
+class CategorieForm(ModelForm):
+    class Meta:
+        model = models.Categorie
+        fields = ("nom", "descritif")
+        labels = {
+            "nom": "Nom",
+            "descriptif": "Descriptif",
         }

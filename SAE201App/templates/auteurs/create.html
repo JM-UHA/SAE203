@@ -1,16 +1,7 @@
 {% extends "skeletons/main.html" %}
 
-{% block "title" %}Tout les auteurs{% endblock %}
+{% block "title" %}Ajouter un auteur{% endblock %}
 
 {% block "content" %}
-<h1>Tout les auteurs</h1>
-
-
-<form method="post" action="/Auteurs/traitement/">
-  {% csrf_token%}
-  {{form.as_ul }} <!
-
-  <input type="submit" value="envoyer les données"\>
-</form>
-
+<h1>Ajouter un auteur</h1>
 {% endblock %}
