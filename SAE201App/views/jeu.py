@@ -60,3 +60,7 @@ def delete(request: HttpRequest, id: int):
 
     jeu.delete()
     return all(request)
+
+def createcrud(request: HttpRequest, id: int):
+    """ajout de crud vai json"""
+

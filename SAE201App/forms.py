@@ -1,4 +1,6 @@
 from django.forms import ModelForm
+from django import forms
+import json
 
 from . import models
 
@@ -61,3 +63,8 @@ class CategorieForm(ModelForm):
             "nom": "Nom",
             "descriptif": "Descriptif",
         }
+
+class ImportJeu(forms.Form):
+    fichier=forms.FileField()
+    form =
+
