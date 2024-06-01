@@ -1,8 +1,12 @@
 {% extends "skeletons/main.html" %}
 
-{% block "title" %}Modification d'une fiche auteur{% endblock %}
+{% block "title" %}Modification de l'auteur{% endblock %}
 
 {% block "content" %}
-<h1>Modification d'une fiche auteur</h1>
+    <h1>Modification de l'auteur</h1>
 
+    <form method="POST" enctype="multipart/form-data" >
+        {% csrf_token %}
+        {{ form.as_p }}
+    <input type="submit" value="Modifier" />
 {% endblock %}

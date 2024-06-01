@@ -1,11 +1,36 @@
 from django.urls import path
 
-from .views import commentaire
-from .views import categorie
-from .views import jeu
-from .views import joueur
+from SAE201App.views import auteurs
+
+from .views import categorie, commentaire, jeu, joueur, ludotheque
 
 urlpatterns = [
+    path("", ludotheque, name="ludotheque"),
+    # Auteurs
+    path("auteurs/", auteurs.all, name="auteur.all"),
+    path("auteurs/create/", auteurs.create, name="auteur.create"),
+    path("auteurs/<int:id>/", auteurs.view, name="auteur.view"),
+    path("auteurs/<int:id>/edit/", auteurs.edit, name="auteur.edit"),
+    path("auteurs/<int:id>/delete/", auteurs.delete, name="auteur.delete"),
+    # Categorie
+    path("categorie/", categorie.all, name="categorie.all"),
+    path(
+        "categorie/create/",
+        categorie.create,
+        name="categorie.create",
+    ),
+    path("categorie/<int:id>/", categorie.view, name="categorie.view"),
+    path(
+        "categorie/<int:id>/edit/",
+        categorie.edit,
+        name="categorie.edit",
+    ),
+    path(
+        "categorie/<int:id>/delete/",
+        categorie.delete,
+        name="categorie.delete",
+    ),
+    # Commentaires
     path("commentaire/<int:jeu_id>/", commentaire.all, name="commentaire.all"),
     path(
         "commentaire/<int:jeu_id>/create/",
@@ -25,36 +50,14 @@ urlpatterns = [
         commentaire.delete,
         name="commentaire.delete",
     ),
-
-    path("categorie/<int:id>/", categorie.all, name="categorie.all"),
+    # Jeux
+    path("jeu/", jeu.all, name="jeu.all"),
     path(
-        "categorie/<int:id>/create/",
-        categorie.create,
-        name="categorie.create",
-    ),
-    path(
-        "categorie/<int:id>/", categorie.view, name="categorie.view"
-    ),
-    path(
-        "categorie/<int:id>/edit/",
-        categorie.edit,
-        name="categorie.edit",
-    ),
-    path(
-        "categorie/<int:id>/delete/",
-        categorie.delete,
-        name="categorie.delete",
-    ),
-
-    path("jeu/<int:id>/", jeu.all, name="jeu.all"),
-    path(
-        "jeu/<int:id>/create/",
+        "jeu/create/",
         jeu.create,
         name="jeu.create",
     ),
-    path(
-        "jeu/<int:id>/", jeu.view, name="jeu.view"
-    ),
+    path("jeu/<int:id>/", jeu.view, name="jeu.view"),
     path(
         "jeu/<int:id>/edit/",
         jeu.edit,
@@ -65,16 +68,19 @@ urlpatterns = [
         jeu.delete,
         name="jeu.delete",
     ),
-
-    path("joueur/<int:id>/", joueur.all, name="joueur.all"),
     path(
-        "joueur/<int:id>/create/",
+        "jeu/import/",
+        jeu.import_jeu,
+        name="jeu.import",
+    ),
+    # Joueurs
+    path("joueur/", joueur.all, name="joueur.all"),
+    path(
+        "joueur/create/",
         joueur.create,
         name="joueur.create",
     ),
-    path(
-        "joueur/<int:id>/", joueur.view, name="joueur.view"
-    ),
+    path("joueur/<int:id>/", joueur.view, name="joueur.view"),
     path(
         "joueur/<int:id>/edit/",
         joueur.edit,

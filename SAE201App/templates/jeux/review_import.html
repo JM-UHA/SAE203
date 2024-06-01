@@ -1,0 +1,27 @@
+{% extends "skeletons/main.html" %}
+
+{% block "title" %}Résultat de l'importation{% endblock %}
+
+{% block "content" %}
+<h1>Résultat de l'importation</h1>
+
+{% if errors is not None %}
+    <p>Une ou plusieur erreurs sont survenue lors de l'importation :</p>
+    {% for error in errors %}
+        <p>{{ error }}</p>
+    {% endfor %}
+{% endif %}
+
+<p>{{ data|length }} jeu(x) ont été importé(s) :</p>
+
+{% if data %}
+    <ul>
+        {% for jeu in data %}
+            <li>{{ jeu.nom }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Aucun jeu n'a été importé.</p>
+{% endif %}
+
+{% endblock %}

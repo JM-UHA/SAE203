@@ -1,6 +1,5 @@
-from django.forms import ModelForm
 from django import forms
-import json
+from django.forms import ModelForm
 
 from . import models
 
@@ -17,15 +16,13 @@ class AuteurForm(ModelForm):
         }
 
 
-class JoueurForm(ModelForm):
+class CategorieForm(ModelForm):
     class Meta:
-        model = models.Joueur
-        fields = ("nom", "prenom", "mail", "type")
+        model = models.CategorieJeu
+        fields = ("nom", "descriptif")
         labels = {
             "nom": "Nom",
-            "prenom": "Prénom",
-            "mail": "Mail",
-            "type": "Type",
+            "descriptif": "Descriptif",
         }
 
 
@@ -55,16 +52,18 @@ class JeuForm(ModelForm):
         }
 
 
-class CategorieForm(ModelForm):
+class JoueurForm(ModelForm):
     class Meta:
-        model = models.CategorieJeu
-        fields = ("nom", "descriptif")
+        model = models.Joueur
+        fields = ("nom", "prenom", "motdepasse", "mail", "type")
         labels = {
             "nom": "Nom",
-            "descriptif": "Descriptif",
+            "prenom": "Prénom",
+            "motdepasse": "Mot de passe",
+            "mail": "Mail",
+            "type": "Type",
         }
 
-class ImportJeu(forms.Form):
-    fichier=forms.FileField()
-    form =
 
+class ImportJeu(forms.Form):
+    fichier = forms.FileField()

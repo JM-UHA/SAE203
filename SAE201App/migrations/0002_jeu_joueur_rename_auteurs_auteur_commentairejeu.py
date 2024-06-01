@@ -62,7 +62,7 @@ class Migration(migrations.Migration):
         ),
         migrations.CreateModel(
             name="CommentaireJeu",
-            fields=[
+            fields=[  # type: ignore
                 (
                     "id",
                     models.BigAutoField(

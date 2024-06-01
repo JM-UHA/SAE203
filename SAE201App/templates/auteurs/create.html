@@ -3,5 +3,11 @@
 {% block "title" %}Ajouter un auteur{% endblock %}
 
 {% block "content" %}
-<h1>Ajouter un auteur</h1>
+    <h1>Ajouter un auteur</h1>
+
+    <form method="POST" enctype="multipart/form-data" action="{% url 'auteur.create' %}">
+        {% csrf_token %}
+        {{ form.as_ul }}
+        <input type="submit" value="Ajouter">
+    </form>
 {% endblock %}

@@ -1,9 +1,13 @@
+import io
+import json
+import typing
+
 from django.http import HttpRequest
 from django.shortcuts import render
 
 from SAE201App.models import Jeu
 
-from ..forms import JeuForm
+from ..forms import ImportJeu, JeuForm
 
 
 def all(request: HttpRequest):
@@ -61,6 +65,84 @@ def delete(request: HttpRequest, id: int):
     jeu.delete()
     return all(request)
 
-def createcrud(request: HttpRequest, id: int):
+
+def import_jeu(request: HttpRequest):
     """ajout de crud vai json"""
 
+    class ImportResult(typing.TypedDict):
+        data: typing.List[Jeu]
+        errors: list[str] | None
+
+    def process_fichier(fichier: typing.Any) -> ImportResult:
+        donnees = io.StringIO(fichier.read().decode("utf-8"))
+        in_json = json.load(donnees)
+
+        if not in_json.get("jeux"):
+            return {
+                "data": [],
+                "errors": [
+                    'Aucun jeu trouvé dans le fichier. Un clé "jeux" doit exister.'
+                ],
+            }
+        if not isinstance(in_json["jeux"], list):
+            return {"data": [], "errors": ['La clé "jeux" doit être une liste.']}
+
+        final: typing.List[Jeu] = []
+        errors: typing.List[str] = []
+
+        for index, jeu in enumerate(in_json["jeux"], start=1):
+            if not isinstance(jeu, dict):
+                errors.append(f"Jeu N.{index}, le jeu {jeu} n'est pas un dictionnaire.")
+                continue
+            if not jeu.get("titre"):
+                errors.append(f'Jeu N.{index}, "titre" manquant.')
+                continue
+            if not jeu.get("annee"):
+                errors.append(f'Jeu N.{index}, "annee" manquante.')
+                continue
+            if not isinstance(jeu["annee"], int):
+                errors.append(f'Jeu N.{index}, "annee" doit être un chiffre.')
+                continue
+            if not jeu.get("editeur"):
+                errors.append(f'Jeu N.{index}, "editeur" manquant.')
+                continue
+            if not jeu.get("auteur"):
+                errors.append(f'Jeu N.{index}, "auteur" manquant.')
+                continue
+
+            final.append(
+                Jeu(
+                    titre=jeu["titre"],
+                    annee=jeu["annee"],
+                    editeur=jeu["editeur"],
+                    auteur=jeu["auteur"],
+                    categorie=None,
+                    photo=None,
+                )
+            )
+
+        return {"data": final, "errors": errors}
+
+    if request.method == "GET":
+        return render(request, "jeux/import.html", {"form": ImportJeu()})
+
+    elif request.method == "POST":
+        form = ImportJeu(request.POST, request.FILES)
+        if form.is_valid():
+            fichier = form.cleaned_data["fichier"]
+            donnees = process_fichier(fichier)
+            print(donnees)
+
+            for jeu in donnees["data"]:
+                jeu.save()
+
+            # Après process
+            return render(
+                request,
+                "jeux/review_import.html",
+                {"data": donnees["data"], "errors": donnees["errors"]},
+            )
+        else:
+            return render(request, "jeux/import.html", {"form": form})
+
+    return all(request)

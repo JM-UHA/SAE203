@@ -4,4 +4,10 @@
 
 {% block "content" %}
 <h1>Ajouter une catégorie</h1>
+
+<form method="POST" action="{% url 'categorie.create' %}">
+    {% csrf_token %}
+    {{ form.as_ul }}
+    <input type="submit" value="Ajouter">
+</form>
 {% endblock %}

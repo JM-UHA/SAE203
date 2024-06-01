@@ -5,6 +5,16 @@
         <title>{% block "title" %}Ludothèque{% endblock %}</title>
     </head>
     <body>
+        <nav>
+            <ul>
+                <li><a href="{% url 'ludotheque' %}">Accueil</a></li>
+                <li><a href="{% url 'auteur.all' %}">Auteurs</a></li>
+                <li><a href="{% url 'categorie.all' %}">Catégories</a></li>
+                <li><a href="{% url 'jeu.all' %}">Jeux</a></li>
+                <li><a href="{% url 'joueur.all' %}">Joueurs</a></li>
+            </ul>
+        </nav>
+
         {% block "content" %}
             <p>Aucun contenu</p>
         {% endblock %}

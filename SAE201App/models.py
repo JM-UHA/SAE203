@@ -21,7 +21,7 @@ class Joueur(models.Model):
 
     nom = models.CharField(max_length=50)
     prenom = models.CharField(max_length=50)
-    mail = models.EmailField(max_length=50)
+    mail = models.EmailField(max_length=254)
     motdepasse = models.CharField(max_length=50)
     type = models.CharField(max_length=3, choices=Type)  # type: ignore
 
@@ -44,10 +44,10 @@ class CommentaireJeu(models.Model):
 
 class Jeu(models.Model):
 
-    titre = models.CharField(max_length=50)
+    titre = models.CharField(max_length=100)
     annee = models.IntegerField()
-    editeur = models.CharField(max_length=50)
-    auteur = models.CharField(max_length=50)
+    editeur = models.CharField(max_length=100)
+    auteur = models.ForeignKey("Auteur", on_delete=models.CASCADE)
     categorie = models.ForeignKey("CategorieJeu", on_delete=models.SET_NULL, null=True)
     photo = models.ImageField(null=True)
 

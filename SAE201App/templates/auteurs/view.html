@@ -3,6 +3,12 @@
 {% block "title" %}Page d'un auteur{% endblock %}
 
 {% block "content" %}
+    <h1>Page de l'auteur</h1>
+    <a href="{% url 'auteur.edit' id=auteur.pk %}">Modifier</a> - <a href="{% url 'auteur.delete' id=auteur.pk %}">Supprimer</a>
 
-    <h1>Page d'un auteur</h1>
+    <p>Nom : {{ auteur.nom }}</p>
+    <p>Prénom : {{ auteur.prenom }}</p>
+    <p>Âge : {{ auteur.age }}</p>
+    <p>Photo :</p>
+    <img src="{{ auteur.photo.url }}" />
 {% endblock %}

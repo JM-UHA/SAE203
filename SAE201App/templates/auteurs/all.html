@@ -3,5 +3,11 @@
 {% block "title" %}Tous les auteurs{% endblock %}
 
 {% block "content" %}
-<h1>Tous les auteurs</h1>
+    <h1>Tous les auteurs</h1>
+
+    <a href="{% url 'auteur.create' %}">Ajouter un auteur</a>
+
+    {% for auteur in auteurs %}
+        <h5><a href="{% url 'auteur.view' id=auteur.pk %}">{{ auteur }}</a></h5>
+    {% endfor %}
 {% endblock %}

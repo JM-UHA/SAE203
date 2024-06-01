@@ -3,16 +3,16 @@
 {% block "title" %}Voir un commentaire{% endblock %}
 
 {% block "content" %}
-<h1>Voir un commentaire</h1>
+    <h1>Voir un commentaire</h1>
 
-<h2>Joueur</h2>
-<p>{{ commentaire.joueur }}</p>
-<h2>Note</h2>
-<p>{{ commentaire.note }}/10</p>
-<h2>Commentaire</h2>
-<p>{{ commentaire.commentaire }}</p>
-<p>Posté le {{ commentaire.date }}</p>
+    <h2>Joueur</h2>
+    <p>{{ commentaire.joueur }}</p>
+    <h2>Note</h2>
+    <p>{{ commentaire.note }}/10</p>
+    <h2>Commentaire</h2>
+    <p>{{ commentaire.commentaire }}</p>
+    <p>Posté le {{ commentaire.date }}</p>
 
-<a href="{% url 'commentaire.edit' jeu_id=jeu.pk id=commentaire.pk %}">Modifier</a> -
-<a href="{% url 'commentaire.delete' jeu_id=jeu.pk id=commentaire.pk %}">Supprimer</a>
+    <a href="{% url 'commentaire.edit' jeu_id=jeu.pk id=commentaire.pk %}">Modifier</a> -
+    <a href="{% url 'commentaire.delete' jeu_id=jeu.pk id=commentaire.pk %}">Supprimer</a>
 {% endblock %}

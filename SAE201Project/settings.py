@@ -121,6 +121,13 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+# File handler
+FILE_UPLOAD_HANDLERS = [
+    "django.core.files.uploadhandler.MemoryFileUploadHandler",
+    "django.core.files.uploadhandler.TemporaryFileUploadHandler",
+]
+
+
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 

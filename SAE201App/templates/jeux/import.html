@@ -1,0 +1,43 @@
+{% extends "skeletons/main.html" %}
+
+{% block "title" %}Modification un jeu{% endblock %}
+
+{% block "content" %}
+<h1>Importation de la liste des jeux</h1>
+
+<p>Pour importer une liste de jeux, vous devez utiliser un fichier au format JSON.</p>
+
+<p>Ce fichier JSON doit être de la sorte :</p>
+<pre>
+{
+    "$schema": "https://raw.githubusercontent.com/JM-UHA/SAE203/main/schema/import.schema.json",
+    "jeux": [
+        {
+            "nom": "Nom du jeu",
+            "editeur": "Nom de l'éditeur",
+            "annee": "Année de sortie",
+            "categorie": "Catégorie du jeu",
+            "description": "Description du jeu",
+        },
+        {
+            "nom": "Nom du jeu",
+            "editeur": "Nom de l'éditeur",
+            "annee": "Année de sortie",
+            "categorie": "Catégorie du jeu",
+            "description": "Description du jeu",
+        },
+        {
+            ...
+        }
+    ]
+}
+</pre>
+<p>La clé <code>$schema</code> permet d'ajouter de l'autocomplétion lors de l'écriture du JSON avec les éditeurs compatibles. (Notamment VSCode)</p>
+
+<form method="POST" enctype="multipart/form-data" action="{% url 'jeu.import' %}">
+    {% csrf_token %}
+    {{ form.as_ul }}
+    <input type="submit" value="Importer">
+</form>
+
+{% endblock %}
