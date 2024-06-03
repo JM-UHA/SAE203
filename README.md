@@ -39,5 +39,5 @@ Sur le serveur hébergent le serveur Django, il faut paramétrer les environment
 - `DJANGO_POSTGRES_NAME` : Nom de la base de donnée.
 - `DJANGO_POSTGRES_USER` : Utilisateur de la DB.
 - `DJANGO_POSTGRES_PASSWORD` : Mot de passe de l'utilisateur.
-- `DJANGO_POSTGRES_NAME` : L'hôte de la DB.
-- `DJANGO_POSTGRES_NAME` : Le port du serveur, par défaut `5432`.
+- `DJANGO_POSTGRES_HOST` : L'hôte de la DB.
+- `DJANGO_POSTGRES_PORT` : Le port du serveur, par défaut `5432`.

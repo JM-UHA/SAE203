@@ -29,8 +29,7 @@ SECRET_KEY = os.environ.get(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DJANGO_DEBUG", "True") == "True"
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
-
+ALLOWED_HOSTS = ["172.16.119.129", "localhost", "127.0.0.1"]
 
 # Application definition
 
@@ -85,13 +84,13 @@ DATABASES = {
     },
     "production": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.environ.get("DJANGO_POSTGRES_NAME"),
-        "USER": os.environ.get("DJANGO_POSTGRES_USER"),
-        "PASSWORD": os.environ.get("DJANGO_POSTGRES_PASSWORD"),
-        "HOST": os.environ.get("DJANGO_POSTGRES_HOST"),
+        "NAME": os.environ["DJANGO_POSTGRES_NAME"],
+        "USER": os.environ["DJANGO_POSTGRES_USER"],
+        "PASSWORD": os.environ["DJANGO_POSTGRES_PASSWORD"],
+        "HOST": os.environ.get("DJANGO_POSTGRES_HOST", "localhost"),
         "PORT": os.environ.get("DJANGO_POSTGRES_PORT", "5432"),
         # "OPTIONS": {
-        #     "service": "sae201",
+        #     "service": "sae203",
         #     "passfile": ".pgpass",
         # },
     },
