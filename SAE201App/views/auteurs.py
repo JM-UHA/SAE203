@@ -45,14 +45,14 @@ def edit(request: HttpRequest, id: int):
 
     if request.method == "GET":
         form = AuteurForm(instance=auteur)
-        return render(request, "auteurs/edit.html", {"form": form})
+        return render(request, "auteurs/edit.html", {"form": form, "auteur": auteur})
 
     if request.method == "POST":
-        form = AuteurForm(request.POST, instance=auteur)
+        form = AuteurForm(request.POST, request.FILES, instance=auteur)
         if form.is_valid():
             form.save()
         else:
-            return render(request, "auteurs/edit.html", {"form": form})
+            return render(request, "auteurs/edit.html", {"form": form, "auteur": auteur})
 
     return view(request, id)
 

@@ -6,6 +6,12 @@ from SAE201App.models import Joueur
 from ..forms import JoueurForm
 
 
+def all(request: HttpRequest):
+    """permet de voir l'ensemble des fiches joueur"""
+    joueurs = Joueur.objects.all()
+    return render(request, "joueurs/all.html", {"joueurs": joueurs})
+
+
 def create(request: HttpRequest):
     """Sert à ajouter un joueur"""
     if request.method == "GET":
@@ -37,12 +43,17 @@ def edit(request: HttpRequest, id: int):
         joueur = Joueur.objects.get(id=id)
     except Joueur.DoesNotExist:
         return render(request, "joueurs/not_found.html", {"id": id})
+
+    if request.method == "GET":
+        form = JoueurForm(instance=joueur)
+        return render(request, "joueurs/edit.html", {"form": form, "joueur": joueur})
+
     if request.method == "POST":
         form = JoueurForm(request.POST, instance=joueur)
         if form.is_valid():
             form.save()
         else:
-            return render(request, "joueurs/edit.html", {"form": form})
+            return render(request, "joueurs/edit.html", {"form": form, "joueur": joueur})
     return view(request, id)
 
 
@@ -54,9 +65,3 @@ def delete(request: HttpRequest, id: int):
         return render(request, "joueurs/not_found.html", {"id": id})
     joueur.delete()
     return all(request)
-
-
-def all(request: HttpRequest):
-    """permet de voir l'ensemble des fiches joueur"""
-    joueur = Joueur.objects.filter()
-    return render(request, "joueurs/all.html", {"joueur": joueur})

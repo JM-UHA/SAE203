@@ -5,8 +5,8 @@
 {% block "content" %}
     <h1>Modification de l'auteur</h1>
 
-    <form method="POST" enctype="multipart/form-data" action="{% url 'auteur.edit' %}">
+    <form method="POST" enctype="multipart/form-data" action="{% url 'auteur.edit' id=auteur.pk %}">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form.as_ul }}
     <input type="submit" value="Modifier" />
 {% endblock %}

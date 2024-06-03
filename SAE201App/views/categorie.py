@@ -44,12 +44,16 @@ def edit(request: HttpRequest, id: int):
     except CategorieJeu.DoesNotExist:
         return render(request, "categories/not_found.html", {"id": id})
 
+    if request.method == "GET":
+        form = CategorieForm(instance=categorie)
+        return render(request, "categories/edit.html", {"form": form, "categorie": categorie})
+
     if request.method == "POST":
-        form = CategorieForm(request.POST, instance=categorie)
+        form = CategorieForm(request.POST, request.FILES, instance=categorie)
         if form.is_valid():
             form.save()
         else:
-            return render(request, "categories/edit.html", {"form": form})
+            return render(request, "categories/edit.html", {"form": form, "categorie": categorie})
 
     return view(request, id)
 

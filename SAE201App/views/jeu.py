@@ -22,7 +22,7 @@ def create(request: HttpRequest):
         return render(request, "jeux/create.html", {"form": JeuForm()})
 
     if request.method == "POST":
-        form = JeuForm(request.POST)
+        form = JeuForm(request.POST, request.FILES)
         if form.is_valid():
             jeu = form.save()
             return view(request, jeu.pk)
@@ -45,12 +45,16 @@ def edit(request: HttpRequest, id: int):
     except Jeu.DoesNotExist:
         return render(request, "jeux/not_found.html", {"id": id})
 
+    if request.method == "GET":
+        form = JeuForm(instance=jeu)
+        return render(request, "jeux/edit.html", {"form": form, "jeu": jeu})
+
     if request.method == "POST":
-        form = JeuForm(request.POST, instance=jeu)
+        form = JeuForm(request.POST, request.FILES, instance=jeu)
         if form.is_valid():
             form.save()
         else:
-            return render(request, "jeux/edit.html", {"form": form})
+            return render(request, "jeux/edit.html", {"form": form, "jeu": jeu})
 
     return view(request, id)
 
@@ -75,7 +79,10 @@ def import_jeu(request: HttpRequest):
 
     def process_fichier(fichier: typing.Any) -> ImportResult:
         donnees = io.StringIO(fichier.read().decode("utf-8"))
-        in_json = json.load(donnees)
+        try:
+            in_json = json.load(donnees)
+        except json.JSONDecodeError:
+            return {"data": [], "errors": [f"Impossible de lire le fichier. Est-ce bien un JSON ?"]}
 
         if not in_json.get("jeux"):
             return {

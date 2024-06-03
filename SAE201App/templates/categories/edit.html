@@ -5,7 +5,7 @@
 {% block "content" %}
     <h1>Modification d'une catégorie</h1>
 
-    <form method="POST"  >
+    <form method="POST" action="{% url 'categorie.edit' id=categorie.pk %}">
         {% csrf_token %}
         {{ form.as_p }}
     <input type="submit" value="Modifier" />
