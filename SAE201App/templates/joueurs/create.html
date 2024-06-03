@@ -3,11 +3,11 @@
 {% block "title" %}Création du joueur{% endblock %}
 
 {% block "content" %}
-<h1>Création du joueur</h1>
+    <h1>Création du joueur</h1>
 
-<form method="POST" action="{% url 'joueur.create' %}">
-    {% csrf_token %}
-    {{ form.as_ul }}
-    <input type="submit" value="Ajouter">
-</form>
+    <form method="POST" action="{% url 'joueur.create' %}">
+        {% csrf_token %}
+        {{ form.as_ul }}
+        <input type="submit" value="Ajouter">
+    </form>
 {% endblock %}

@@ -3,5 +3,12 @@
 {% block "title" %}Modification du joueur{% endblock %}
 
 {% block "content" %}
-<h1>Modification du joueur</h1>
+    <h1>Modification du joueur</h1>
+
+    <form method="POST"  >
+        {% csrf_token %}
+        {{ form.as_p }}
+    <input type="submit" value="Modifier" />
+
+
 {% endblock %}

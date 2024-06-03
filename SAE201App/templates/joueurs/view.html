@@ -3,5 +3,12 @@
 {% block "title" %}Page du joueur{% endblock %}
 
 {% block "content" %}
-<h1>Page du joueur</h1>
+    <h1>Page du joueur</h1>
+    <a href="{% url 'joueur.edit' id=joueur.pk %}">Modifier</a> - <a href="{% url 'joueur.delete' id=joueur.pk %}">Supprimer</a>
+
+    <p>Nom : {{ joueur.nom }}</p>
+    <p>Prénom : {{ joueur.prenom }}</p>
+    <p>Mot de passe : {{ joueur.motdepasse }}</p>
+    <p>Mail : {{ joueur.mail }}</p>
+    <p>Type : {{ joueur.type }}</p>
 {% endblock %}

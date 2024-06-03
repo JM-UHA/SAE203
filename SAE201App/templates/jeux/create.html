@@ -3,11 +3,11 @@
 {% block "title" %}Ajouter un jeu{% endblock %}
 
 {% block "content" %}
-<h1>Ajouter un jeu</h1>
+    <h1>Ajouter un jeu</h1>
 
-<form method="POST" action="{% url 'jeu.create' %}">
-    {% csrf_token %}
-    {{ form.as_ul }}
+    <form method="POST" enctype="multipart/form-data" action="{% url 'jeu.create' %}">
+        {% csrf_token %}
+        {{ form.as_ul }}
     <input type="submit" value="Ajouter">
 </form>
 {% endblock %}

@@ -5,4 +5,14 @@
 {% block "content" %}
 
     <h1>Page d'un jeu</h1>
+     <a href="{% url 'jeu.edit' id=jeu.pk %}">Modifier</a> - <a href="{% url 'jeu.delete' id=jeu.pk %}">Supprimer</a>
+
+    <p>Titre : {{ jeu.titre }}</p>
+    <p>Année: {{ jeu.annee }}</p>
+    <p>Editeur : {{ jeu.editeur }}</p>
+    <p>Auteur : {{ jeu.auteur }}</p>
+    <p>Catégorie: {{ jeu.categorie }}</p>
+    <p>Photo :</p>
+    <img src="{{ jeu.photo.url }}" />
+
 {% endblock %}
