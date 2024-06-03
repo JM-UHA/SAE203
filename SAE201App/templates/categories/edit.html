@@ -3,6 +3,11 @@
 {% block "title" %}Modification d'une catégorie{% endblock %}
 
 {% block "content" %}
-<h1>Modification d'une catégorie</h1>
+    <h1>Modification d'une catégorie</h1>
+
+    <form method="POST"  >
+        {% csrf_token %}
+        {{ form.as_p }}
+    <input type="submit" value="Modifier" />
 
 {% endblock %}

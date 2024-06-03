@@ -12,7 +12,7 @@ from ..forms import ImportJeu, JeuForm
 
 def all(request: HttpRequest):
     """permet de voir l'ensemble des jeux"""
-    jeu = Jeu.objects.filter()
+    jeu = Jeu.objects.all()
     return render(request, "jeux/all.html", {"jeu": jeu})
 
 
@@ -131,7 +131,6 @@ def import_jeu(request: HttpRequest):
         if form.is_valid():
             fichier = form.cleaned_data["fichier"]
             donnees = process_fichier(fichier)
-            print(donnees)
 
             for jeu in donnees["data"]:
                 jeu.save()

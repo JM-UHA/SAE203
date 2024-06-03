@@ -5,4 +5,9 @@
 {% block "content" %}
 
     <h1>Page de la catégorie</h1>
+    <a href="{% url 'categorie.edit' id=categorie.pk %}">Modifier</a> - <a href="{% url 'categorie.delete' id=categorie.pk %}">Supprimer</a>
+
+    <p>Nom : {{ categorie.nom }}</p>
+    <p>Descriptif : {{ categorie.descriptif }}</p>
+
 {% endblock %}

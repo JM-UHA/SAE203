@@ -5,5 +5,10 @@
 {% block "content" %}
 <h1>Tous les joueurs</h1>
 
-<a href="{% url 'joueur.create' %}">Ajouter un joueur</a>
+    <a href="{% url 'joueur.create' %}">Ajouter un joueur</a>
+
+    {% for joueur in joueurs %}
+        <h5><a href="{% url 'joueur.view' id=joueur.pk %}">{{ joueur }}</a></h5>
+    {% endfor %}
+
 {% endblock %}

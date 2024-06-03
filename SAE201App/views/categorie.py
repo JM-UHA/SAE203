@@ -8,8 +8,8 @@ from ..forms import CategorieForm
 
 def all(request: HttpRequest):
     """affiche toutes les catégories."""
-    categorie = CategorieJeu.objects.filter()
-    return render(request, "categories/all.html", {"categorie": categorie})
+    categorie = CategorieJeu.objects.all()
+    return render(request, "categories/all.html", {"categories": categorie})
 
 
 def create(request: HttpRequest):
@@ -20,8 +20,7 @@ def create(request: HttpRequest):
     if request.method == "POST":
         form = CategorieForm(request.POST)
         if form.is_valid():
-            Categorie = form.save()
-            return render(request, "categories/view.html", {"categorie": Categorie})
+            form.save()
         else:
             return render(request, "categories/create.html", {"form": form})
 
@@ -55,7 +54,7 @@ def edit(request: HttpRequest, id: int):
     return view(request, id)
 
 
-def delete(request: HttpRequest, categorie_id: int, id: int):
+def delete(request: HttpRequest, id: int):
     """permet de supprimer une catégorie"""
     try:
         categorie = CategorieJeu.objects.get(id=id)

@@ -3,7 +3,11 @@
 {% block "title" %}Tous les jeux{% endblock %}
 
 {% block "content" %}
-<h1>Tous les jeux</h1>
+    <h1>Tous les jeux</h1>
 
-<a href="{% url 'jeu.create' %}">Ajouter un jeu</a>
+    <a href="{% url 'jeu.create' %}">Ajouter un jeu</a>
+
+    {% for jeu in jeux %}
+        <h5><a href="{% url 'jeu.view' id=jeu.pk %}">{{ jeu }}</a></h5>
+    {% endfor %}
 {% endblock %}

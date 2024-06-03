@@ -3,7 +3,11 @@
 {% block "title" %}Toutes les catégories{% endblock %}
 
 {% block "content" %}
-<h1>Toutes les catégories</h1>
+    <h1>Toutes les catégories</h1>
 
-<a href="{% url 'categorie.create' %}">Créer une catégorie</a>
+    <a href="{% url 'categorie.create' %}">Créer une catégorie</a>
+
+    {% for categorie in categories %}
+        <h5><a href="{% url 'categorie.view' id=categorie.pk %}">{{ categorie }}</a></h5>
+    {% endfor %}
 {% endblock %}
