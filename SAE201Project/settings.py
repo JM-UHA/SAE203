@@ -82,7 +82,11 @@ DATABASES = {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "db.sqlite3",
     },
-    "production": {
+}
+
+
+if not DEBUG:  # En production
+    DATABASES["default"] = {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": os.environ["DJANGO_POSTGRES_NAME"],
         "USER": os.environ["DJANGO_POSTGRES_USER"],
@@ -93,12 +97,7 @@ DATABASES = {
         #     "service": "sae203",
         #     "passfile": ".pgpass",
         # },
-    },
-}
-
-
-if not DEBUG:  # En production
-    DATABASES["default"] = DATABASES["production"]
+    }
 
 
 # Password validation
