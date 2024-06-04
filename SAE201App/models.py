@@ -47,7 +47,9 @@ class Jeu(models.Model):
     titre = models.CharField(max_length=100)
     annee = models.IntegerField()
     editeur = models.CharField(max_length=100)
-    auteur = models.ForeignKey("Auteur", on_delete=models.CASCADE)
+    auteur: models.ForeignKey["Auteur"] = models.ForeignKey(
+        "Auteur", on_delete=models.CASCADE
+    )
     categorie = models.ForeignKey("CategorieJeu", on_delete=models.SET_NULL, null=True)
     photo = models.ImageField(null=True)
 

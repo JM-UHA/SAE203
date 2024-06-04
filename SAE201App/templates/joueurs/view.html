@@ -6,6 +6,8 @@
     <h1>Page du joueur</h1>
     <a href="{% url 'joueur.edit' id=joueur.pk %}">Modifier</a> - <a href="{% url 'joueur.delete' id=joueur.pk %}">Supprimer</a>
 
+    <h2><a href="{% url 'joueur.commentaire' id=joueur.pk %}">Voir ses commentaires</a></h2>
+
     <p>Nom : {{ joueur.nom }}</p>
     <p>Prénom : {{ joueur.prenom }}</p>
     <p>Mot de passe : {{ joueur.motdepasse }}</p>

@@ -91,4 +91,9 @@ urlpatterns = [
         joueur.delete,
         name="joueur.delete",
     ),
+    path(
+        "joueur/<int:id>/commentaire/",
+        joueur.commentaire,
+        name="joueur.commentaire",
+    ),
 ]

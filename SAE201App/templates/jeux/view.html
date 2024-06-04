@@ -6,6 +6,7 @@
 
     <h1>Page d'un jeu</h1>
      <a href="{% url 'jeu.edit' id=jeu.pk %}">Modifier</a> - <a href="{% url 'jeu.delete' id=jeu.pk %}">Supprimer</a>
+    <h2><a href="{% url 'commentaire.all' jeu_id=jeu.pk %}">Voir les commentaires</a></h2>
 
     <p>Titre : {{ jeu.titre }}</p>
     <p>Année: {{ jeu.annee }}</p>

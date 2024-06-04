@@ -1,7 +1,7 @@
 from django.http import HttpRequest
 from django.shortcuts import render
 
-from SAE201App.models import Joueur
+from SAE201App.models import CommentaireJeu, Joueur
 
 from ..forms import JoueurForm
 
@@ -53,7 +53,9 @@ def edit(request: HttpRequest, id: int):
         if form.is_valid():
             form.save()
         else:
-            return render(request, "joueurs/edit.html", {"form": form, "joueur": joueur})
+            return render(
+                request, "joueurs/edit.html", {"form": form, "joueur": joueur}
+            )
     return view(request, id)
 
 
@@ -65,3 +67,20 @@ def delete(request: HttpRequest, id: int):
         return render(request, "joueurs/not_found.html", {"id": id})
     joueur.delete()
     return all(request)
+
+
+def commentaire(request: HttpRequest, id: int):
+    """Permet de voir les commentaires d'un joueur"""
+    try:
+        joueur = Joueur.objects.get(id=id)
+    except Joueur.DoesNotExist:
+        return render(request, "joueurs/not_found.html", {"id": id})
+
+    return render(
+        request,
+        "joueurs/commentaire.html",
+        {
+            "joueur": joueur,
+            "commentaires": CommentaireJeu.objects.filter(joueur=joueur),
+        },
+    )

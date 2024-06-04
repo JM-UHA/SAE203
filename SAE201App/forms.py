@@ -26,12 +26,22 @@ class CategorieForm(ModelForm):
         }
 
 
-class CommentaireForm(ModelForm):
+class CommentaireNoJoueurForm(ModelForm):
     class Meta:
         model = models.CommentaireJeu
-        fields = ("jeu", "joueur", "note", "commentaire")
+        fields = ("jeu", "note", "commentaire")
         labels = {
             "jeu": "Jeu",
+            "note": "Votre note sur 10",
+            "commentaire": "Commentaire",
+        }
+
+
+class CommentaireNoJeuForm(ModelForm):
+    class Meta:
+        model = models.CommentaireJeu
+        fields = ("joueur", "note", "commentaire")
+        labels = {
             "joueur": "Joueur",
             "note": "Votre note sur 10",
             "commentaire": "Commentaire",

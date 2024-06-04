@@ -4,6 +4,7 @@ from django.shortcuts import render
 from ..forms import AuteurForm
 from ..models import Auteur
 
+
 def all(request: HttpRequest):
     """permet de voir l'ensemble des fiches auteur"""
     auteurs = Auteur.objects.all()
@@ -52,7 +53,9 @@ def edit(request: HttpRequest, id: int):
         if form.is_valid():
             form.save()
         else:
-            return render(request, "auteurs/edit.html", {"form": form, "auteur": auteur})
+            return render(
+                request, "auteurs/edit.html", {"form": form, "auteur": auteur}
+            )
 
     return view(request, id)
 

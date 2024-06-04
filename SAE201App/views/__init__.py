@@ -1,4 +1,5 @@
 import typing
+
 from django.shortcuts import render
 
 if typing.TYPE_CHECKING:
@@ -6,4 +7,4 @@ if typing.TYPE_CHECKING:
 
 
 def ludotheque(request: "HttpRequest"):
-    return render(request, 'index.html')
+    return render(request, "index.html")

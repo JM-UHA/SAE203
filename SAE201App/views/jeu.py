@@ -11,13 +11,13 @@ from ..forms import ImportJeu, JeuForm
 
 
 def all(request: HttpRequest):
-    """permet de voir l'ensemble des jeux"""
-    jeu = Jeu.objects.all()
-    return render(request, "jeux/all.html", {"jeu": jeu})
+    """Permet l'affichage globale de tout les jeux."""
+    jeux = Jeu.objects.all()
+    return render(request, "jeux/all.html", {"jeux": jeux})
 
 
 def create(request: HttpRequest):
-    """ajouter un jeu"""
+    """Ajoute un jeu."""
     if request.method == "GET":
         return render(request, "jeux/create.html", {"form": JeuForm()})
 
@@ -33,13 +33,13 @@ def create(request: HttpRequest):
 
 
 def view(request: HttpRequest, id: int):
-    """permet de voir une fiche de jeu"""
+    """Permet de voir en détail les informations d'un jeu."""
     jeu = Jeu.objects.get(pk=id)
     return render(request, "jeux/view.html", {"jeu": jeu})
 
 
 def edit(request: HttpRequest, id: int):
-    """Permet de modifier la fiche d'un jeu"""
+    """Permet de modifier la fiche d'un jeu."""
     try:
         jeu = Jeu.objects.get(id=id)
     except Jeu.DoesNotExist:
@@ -60,7 +60,7 @@ def edit(request: HttpRequest, id: int):
 
 
 def delete(request: HttpRequest, id: int):
-    """permet de supprimer un jeu"""
+    """Supprime un jeu."""
     try:
         jeu = Jeu.objects.get(id=id)
     except Jeu.DoesNotExist:
@@ -71,7 +71,7 @@ def delete(request: HttpRequest, id: int):
 
 
 def import_jeu(request: HttpRequest):
-    """ajout de crud vai json"""
+    """Permet d'ajouter des jeux via un fichier JSON."""
 
     class ImportResult(typing.TypedDict):
         data: typing.List[Jeu]
@@ -82,7 +82,10 @@ def import_jeu(request: HttpRequest):
         try:
             in_json = json.load(donnees)
         except json.JSONDecodeError:
-            return {"data": [], "errors": [f"Impossible de lire le fichier. Est-ce bien un JSON ?"]}
+            return {
+                "data": [],
+                "errors": [f"Impossible de lire le fichier. Est-ce bien un JSON ?"],
+            }
 
         if not in_json.get("jeux"):
             return {
@@ -101,6 +104,7 @@ def import_jeu(request: HttpRequest):
             if not isinstance(jeu, dict):
                 errors.append(f"Jeu N.{index}, le jeu {jeu} n'est pas un dictionnaire.")
                 continue
+            jeu = typing.cast(typing.Dict[str, typing.Any], jeu)
             if not jeu.get("titre"):
                 errors.append(f'Jeu N.{index}, "titre" manquant.')
                 continue

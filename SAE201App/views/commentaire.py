@@ -1,7 +1,7 @@
 from django.http import HttpRequest
 from django.shortcuts import render
 
-from ..forms import CommentaireForm
+from ..forms import CommentaireNoJeuForm, CommentaireNoJoueurForm
 from ..models import CommentaireJeu, Jeu
 
 
@@ -28,11 +28,13 @@ def create(request: HttpRequest, jeu_id: int):
 
     if request.method == "GET":
         return render(
-            request, "commentaires/create.html", {"form": CommentaireForm(), "jeu": jeu}
+            request,
+            "commentaires/create.html",
+            {"form": CommentaireNoJeuForm(), "jeu": jeu},
         )
 
     if request.method == "POST":
-        form = CommentaireForm(request.POST)
+        form = CommentaireNoJeuForm(request.POST)
         if form.is_valid():
             commentaire: CommentaireJeu = form.save(commit=False)
             commentaire.jeu = jeu
@@ -79,17 +81,19 @@ def edit(request: HttpRequest, jeu_id: int, id: int):
             request,
             "commentaires/edit.html",
             {
-                "form": CommentaireForm(instance=commentaire),
+                "form": CommentaireNoJoueurForm(instance=commentaire),
                 "jeu": jeu,
                 "commentaire": commentaire,
             },
         )
+
     if request.method == "POST":
-        form = CommentaireForm(request.POST, instance=commentaire)
+        form = CommentaireNoJoueurForm(request.POST, instance=commentaire)
         if form.is_valid():
             form.save()
         else:
             return render(request, "commentaires/edit.html", {"form": form, "jeu": jeu})
+
     return view(request, jeu_id, id)
 
 
