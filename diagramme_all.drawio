@@ -1,0 +1,173 @@
+<mxfile host="app.diagrams.net" modified="2024-06-10T13:45:03.908Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36" etag="F9iEQdahsMNFbcXG29vN" version="24.4.4" type="github" pages="3">
+  <diagram name="Réseau" id="wQJ5RSyBs01M8BYCUuLi">
+    <mxGraphModel dx="505" dy="446" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="BGWdTx4vDgIxljTxRoE6-2" value="Serveur Web&lt;div&gt;Fedora 40&lt;/div&gt;" style="image;points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;image=img/lib/allied_telesis/computer_and_terminals/Server_Desktop.svg;" vertex="1" parent="1">
+          <mxGeometry x="470" y="450" width="42.599999999999994" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="BGWdTx4vDgIxljTxRoE6-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="BGWdTx4vDgIxljTxRoE6-3" target="BGWdTx4vDgIxljTxRoE6-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="BGWdTx4vDgIxljTxRoE6-15" value="172.16.119.4" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="BGWdTx4vDgIxljTxRoE6-5">
+          <mxGeometry x="-0.4992" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="BGWdTx4vDgIxljTxRoE6-3" value="Serveur SQL&lt;div&gt;Windows 11&lt;/div&gt;" style="image;points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;image=img/lib/allied_telesis/computer_and_terminals/Server_Desktop.svg;" vertex="1" parent="1">
+          <mxGeometry x="190" y="450" width="42.599999999999994" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="BGWdTx4vDgIxljTxRoE6-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="BGWdTx4vDgIxljTxRoE6-4" target="BGWdTx4vDgIxljTxRoE6-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="BGWdTx4vDgIxljTxRoE6-12" value="Réseau machines virtuelles" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="BGWdTx4vDgIxljTxRoE6-8">
+          <mxGeometry x="-0.2526" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="BGWdTx4vDgIxljTxRoE6-4" value="" style="image;points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;image=img/lib/allied_telesis/switch/Switch_24_port_L3.svg;" vertex="1" parent="1">
+          <mxGeometry x="310" y="330" width="74.4" height="51" as="geometry" />
+        </mxCell>
+        <mxCell id="BGWdTx4vDgIxljTxRoE6-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="BGWdTx4vDgIxljTxRoE6-2" target="BGWdTx4vDgIxljTxRoE6-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="BGWdTx4vDgIxljTxRoE6-13" value="NAT - 172.16.119.0/24" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="BGWdTx4vDgIxljTxRoE6-6">
+          <mxGeometry x="0.8385" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="BGWdTx4vDgIxljTxRoE6-16" value="172.16.119.2" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="BGWdTx4vDgIxljTxRoE6-6">
+          <mxGeometry x="0.5826" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="BGWdTx4vDgIxljTxRoE6-17" value="172.16.119.3" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="BGWdTx4vDgIxljTxRoE6-6">
+          <mxGeometry x="-0.5034" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="BGWdTx4vDgIxljTxRoE6-7" value="Hôte" style="image;points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;image=img/lib/allied_telesis/computer_and_terminals/Laptop.svg;" vertex="1" parent="1">
+          <mxGeometry x="326.2" y="210" width="42" height="42.599999999999994" as="geometry" />
+        </mxCell>
+        <mxCell id="BGWdTx4vDgIxljTxRoE6-9" value="Réseau externe" style="image;points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;image=img/lib/allied_telesis/wireless/Access_Point_Indoor.svg;" vertex="1" parent="1">
+          <mxGeometry x="499.9999999999999" y="210" width="36.6" height="54.6" as="geometry" />
+        </mxCell>
+        <mxCell id="BGWdTx4vDgIxljTxRoE6-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=-0.095;entryY=0.404;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="BGWdTx4vDgIxljTxRoE6-7" target="BGWdTx4vDgIxljTxRoE6-9">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="320" y="200" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="BGWdTx4vDgIxljTxRoE6-11" value="IP attribué par DHCP" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="BGWdTx4vDgIxljTxRoE6-10">
+          <mxGeometry x="0.0453" y="2" relative="1" as="geometry">
+            <mxPoint x="-10" as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="pIJ_iWLLdpTAQ-F0K0-O" name="Serveur web">
+    <mxGraphModel dx="799" dy="446" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="HEzwaar5zpu3J60yaCBW-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=none;startArrow=classic;startFill=1;endArrow=none;endFill=0;" edge="1" parent="1" source="HEzwaar5zpu3J60yaCBW-1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="60" y="407" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="HEzwaar5zpu3J60yaCBW-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;startArrow=classic;startFill=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="110" y="406.71" as="targetPoint" />
+            <mxPoint x="180" y="406.73857142857133" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="HEzwaar5zpu3J60yaCBW-5" value="Requête HTTP&amp;nbsp;&lt;div&gt;Réponse HTTP&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="HEzwaar5zpu3J60yaCBW-3">
+          <mxGeometry x="0.5081" y="-1" relative="1" as="geometry">
+            <mxPoint x="-57" y="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="HEzwaar5zpu3J60yaCBW-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=-0.033;entryY=0.489;entryDx=0;entryDy=0;entryPerimeter=0;startArrow=classic;startFill=1;" edge="1" parent="1" source="HEzwaar5zpu3J60yaCBW-1" target="HEzwaar5zpu3J60yaCBW-7">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="260" y="407" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="HEzwaar5zpu3J60yaCBW-1" value="Serveur Web&lt;div&gt;Fedora 40&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;172.16.119.3&lt;/div&gt;" style="image;points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;image=img/lib/allied_telesis/computer_and_terminals/Server_Desktop.svg;" vertex="1" parent="1">
+          <mxGeometry x="180" y="380" width="42.599999999999994" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="HEzwaar5zpu3J60yaCBW-7" value="Pare-feu système" style="image;points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;image=img/lib/allied_telesis/security/Router_VPN.svg;" vertex="1" parent="1">
+          <mxGeometry x="280" y="387.2" width="55.800000000000004" height="39.6" as="geometry" />
+        </mxCell>
+        <mxCell id="HEzwaar5zpu3J60yaCBW-19" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=classic;startFill=1;" edge="1" parent="1" source="HEzwaar5zpu3J60yaCBW-9" target="HEzwaar5zpu3J60yaCBW-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="HEzwaar5zpu3J60yaCBW-20" value="Connexion&lt;div&gt;base de donées&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="HEzwaar5zpu3J60yaCBW-19">
+          <mxGeometry x="-0.1069" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="HEzwaar5zpu3J60yaCBW-9" value="Serveur Django&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;- Traitement requêtes&lt;/div&gt;&lt;div&gt;- Affichage pages&lt;/div&gt;" style="aspect=fixed;sketch=0;html=1;dashed=0;whitespace=wrap;verticalLabelPosition=bottom;verticalAlign=top;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];shape=mxgraph.kubernetes.icon2;prIcon=api" vertex="1" parent="1">
+          <mxGeometry x="640" y="372.6" width="56.46" height="54.2" as="geometry" />
+        </mxCell>
+        <mxCell id="HEzwaar5zpu3J60yaCBW-10" value="Caddy&lt;div&gt;Port 80&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;- Reverse proxy&lt;/div&gt;&lt;div&gt;vers Gunicorn&lt;/div&gt;" style="aspect=fixed;sketch=0;html=1;dashed=0;whitespace=wrap;verticalLabelPosition=bottom;verticalAlign=top;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];shape=mxgraph.kubernetes.icon2;prIcon=rb" vertex="1" parent="1">
+          <mxGeometry x="397" y="372.8" width="56.25" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="HEzwaar5zpu3J60yaCBW-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.005;entryY=0.63;entryDx=0;entryDy=0;entryPerimeter=0;startArrow=classic;startFill=1;" edge="1" parent="1" source="HEzwaar5zpu3J60yaCBW-7" target="HEzwaar5zpu3J60yaCBW-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="HEzwaar5zpu3J60yaCBW-13" value="Serveur Gunicorn&lt;div&gt;Port 2024&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;- Transfert requête&lt;/div&gt;&lt;div&gt;serveur Django&lt;/div&gt;" style="aspect=fixed;sketch=0;html=1;dashed=0;whitespace=wrap;verticalLabelPosition=bottom;verticalAlign=top;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];shape=mxgraph.kubernetes.icon2;prIcon=api" vertex="1" parent="1">
+          <mxGeometry x="520" y="372.8" width="56.46" height="54.2" as="geometry" />
+        </mxCell>
+        <mxCell id="HEzwaar5zpu3J60yaCBW-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.995;exitY=0.63;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.005;entryY=0.63;entryDx=0;entryDy=0;entryPerimeter=0;startArrow=classic;startFill=1;" edge="1" parent="1" source="HEzwaar5zpu3J60yaCBW-10" target="HEzwaar5zpu3J60yaCBW-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="HEzwaar5zpu3J60yaCBW-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.995;exitY=0.63;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.005;entryY=0.63;entryDx=0;entryDy=0;entryPerimeter=0;startArrow=classic;startFill=1;" edge="1" parent="1" source="HEzwaar5zpu3J60yaCBW-13" target="HEzwaar5zpu3J60yaCBW-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="HEzwaar5zpu3J60yaCBW-18" value="PostgreSQL&lt;div&gt;(Voir schéma serveur SQL)&lt;/div&gt;" style="aspect=fixed;sketch=0;html=1;dashed=0;whitespace=wrap;verticalLabelPosition=top;verticalAlign=bottom;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];shape=mxgraph.kubernetes.icon2;prIcon=vol;labelPosition=center;align=center;" vertex="1" parent="1">
+          <mxGeometry x="636.98" y="230" width="62.5" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="pJ0FaYxxtWUzAbW7-fUr" name="Serveur SQL">
+    <mxGraphModel dx="799" dy="446" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="i6zqRkhSnqAM5AUe3-tY-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=none;startArrow=classic;startFill=1;endArrow=none;endFill=0;" edge="1" parent="1" source="i6zqRkhSnqAM5AUe3-tY-5">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="60" y="407" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="i6zqRkhSnqAM5AUe3-tY-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;startArrow=classic;startFill=1;" edge="1" parent="1" source="i6zqRkhSnqAM5AUe3-tY-5">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="80" y="407" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="i6zqRkhSnqAM5AUe3-tY-3" value="Requête SQL&amp;nbsp;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="i6zqRkhSnqAM5AUe3-tY-2">
+          <mxGeometry x="0.5081" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="i6zqRkhSnqAM5AUe3-tY-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=-0.033;entryY=0.489;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="i6zqRkhSnqAM5AUe3-tY-5" target="i6zqRkhSnqAM5AUe3-tY-6">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="260" y="407" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="i6zqRkhSnqAM5AUe3-tY-5" value="Serveur SQL&lt;div&gt;Windows&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;172.16.119.4&lt;/div&gt;" style="image;points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;image=img/lib/allied_telesis/computer_and_terminals/Server_Desktop.svg;" vertex="1" parent="1">
+          <mxGeometry x="180" y="380" width="42.599999999999994" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="i6zqRkhSnqAM5AUe3-tY-12" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="i6zqRkhSnqAM5AUe3-tY-6" target="i6zqRkhSnqAM5AUe3-tY-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="i6zqRkhSnqAM5AUe3-tY-6" value="Pare-feu système" style="image;points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;image=img/lib/allied_telesis/security/Router_VPN.svg;" vertex="1" parent="1">
+          <mxGeometry x="290" y="387.2" width="55.800000000000004" height="39.6" as="geometry" />
+        </mxCell>
+        <mxCell id="i6zqRkhSnqAM5AUe3-tY-10" value="Serveur PostgreSQL&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;- Authentification&lt;/div&gt;&lt;div&gt;- Traitement SQL&lt;/div&gt;" style="aspect=fixed;sketch=0;html=1;dashed=0;whitespace=wrap;verticalLabelPosition=bottom;verticalAlign=top;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];shape=mxgraph.kubernetes.icon2;prIcon=vol" vertex="1" parent="1">
+          <mxGeometry x="410" y="375.59999999999997" width="65.41" height="62.8" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
