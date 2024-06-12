@@ -1,0 +1,21 @@
+{
+    "$schema": "https://raw.githubusercontent.com/JM-UHA/SAE203/main/schema/import.schema.json",
+    "jeux": [
+        {
+            "titre": "monopoly",
+            "editeur": "Hasbro",
+            "auteur": "agatha",
+            "annee": 1935,
+            "categorie": "Guerre",
+            "description": "le jeu le plus célebre au monde"
+        },
+        {
+            "titre": "Uno",
+            "editeur": "Mattel",
+            "auteur": "Cathala Bruno",
+            "annee": 1971,
+            "categorie": "carte",
+            "description": "Choisez vos regles et soyez le plus rapide"
+        }
+    ]
+}
