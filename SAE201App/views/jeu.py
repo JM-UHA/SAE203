@@ -126,7 +126,11 @@ def import_jeu(request: HttpRequest):
             if not len(jeu["auteur"]) == 2:  # type: ignore
                 errors.append(f'Jeu N.{index}, "auteur" doit contenir 2 éléments.')
                 continue
-            jeu_auteur = Auteur.objects.filter(nom=jeu["auteur"][0], prenom=jeu["auteur"][1]).first()
+            try:
+                jeu_auteur = Auteur.objects.filter(nom=jeu["auteur"][0], prenom=jeu["auteur"][1]).first()
+            except Auteur.DoesNotExist:
+                errors.append(f'Jeu N.{index}, l\'auteur {jeu["auteur"][0]} {jeu["auteur"][1]} n\'existe pas.')
+                continue
 
             final.append(
                 Jeu(
