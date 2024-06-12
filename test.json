@@ -1,0 +1,11 @@
+{
+  "$schema":  "https://raw.githubusercontent.com/JM-UHA/SAE203/main/schema/import.schema.json",
+  "jeux": [
+    {
+      "titre": "Uno",
+      "annee": 1971,
+      "auteur": ["That", "That"],
+      "editeur": "Hasbro"
+    }
+  ]
+}
