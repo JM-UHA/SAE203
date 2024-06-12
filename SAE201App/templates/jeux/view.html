@@ -13,7 +13,9 @@
     <p>Editeur : {{ jeu.editeur }}</p>
     <p>Auteur : {{ jeu.auteur }}</p>
     <p>Catégorie: {{ jeu.categorie }}</p>
-    <p>Photo :</p>
-    <img src="{{ jeu.photo.url }}" />
+    {% if jeu.photo.name != "" %}
+        <p>Photo :</p>
+        <img src="{{ jeu.photo.url }}" />
+    {% endif %}
 
 {% endblock %}

@@ -17,14 +17,16 @@
                 "type": "string"
               },
               "auteur": {
-                "type": "string"
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 2
               },
               "annee": {
-                "type": "string"
+                "type": "number"
               }
             },
             "required": [
-              "nom",
+              "titre",
               "editeur",
               "auteur",
               "annee"
