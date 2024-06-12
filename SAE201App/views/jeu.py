@@ -5,7 +5,7 @@ import typing
 from django.http import HttpRequest
 from django.shortcuts import render
 
-from SAE201App.models import Jeu
+from SAE201App.models import Auteur, Jeu
 
 from ..forms import ImportJeu, JeuForm
 
@@ -120,13 +120,20 @@ def import_jeu(request: HttpRequest):
             if not jeu.get("auteur"):
                 errors.append(f'Jeu N.{index}, "auteur" manquant.')
                 continue
+            if not isinstance(jeu["auteur"], list):
+                errors.append(f'Jeu N.{index}, "auteur" n\'est pas une liste.')
+                continue
+            if not len(jeu["auteur"]) == 2:  # type: ignore
+                errors.append(f'Jeu N.{index}, "auteur" doit contenir 2 éléments.')
+                continue
+            jeu_auteur = Auteur.objects.filter(nom=jeu["auteur"][0], prenom=jeu["auteur"][1]).first()
 
             final.append(
                 Jeu(
                     titre=jeu["titre"],
                     annee=jeu["annee"],
                     editeur=jeu["editeur"],
-                    auteur=jeu["auteur"],
+                    auteur=jeu_auteur,
                     categorie=None,
                     photo=None,
                 )
