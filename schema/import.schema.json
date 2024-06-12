@@ -10,10 +10,13 @@
           {
             "type": "object",
             "properties": {
-              "nom": {
+              "titre": {
                 "type": "string"
               },
               "editeur": {
+                "type": "string"
+              },
+              "auteur": {
                 "type": "string"
               },
               "annee": {
@@ -23,6 +26,7 @@
             "required": [
               "nom",
               "editeur",
+              "auteur",
               "annee"
             ]
           }
