@@ -1,0 +1,27 @@
+[Unit]
+Description=Ludothèque SAE203
+After=multi-user.target
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+ExecStart=/var/www/SAE203/.venv/bin/python -O -m gunicorn SAE201Project.wsgi -b 127.0.0.1:2024
+ExecStartPre=/var/www/SAE203/.venv/bin/python /var/www/SAE203/manage.py migrate
+
+User=toto
+Group=toto
+KillMode=mixed
+Restart=on-abnormal
+RestartSec=5
+TimeoutStopSec=5
+PrivateTmp=true
+
+Environment="DJANGO_DEBUG=False"
+Environment="DJANGO_SECRET=bekjrjhbgkhGHBJYVftfNLHBhyg56grG568r8rtn8896"
+Environment="DJANGO_POSTGRES_HOST=172.16.119.4"
+Environment="DJANGO_POSTGRES_NAME=sae203"
+Environment="DJANGO_POSTGRES_USER=toto"
+Environment="DJANGO_POSTGRES_PASSWORD=toto"
+
+[Install]
+WantedBy=multi-user.target
